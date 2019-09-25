@@ -109,9 +109,11 @@
 <p>O(logN)的时间复杂度</p>
 <hr />
 <p><font color=#0099ff size=12 face="黑体">开始解题</font></p>
-<p>因为是阶乘，所以看看哪些能用乘法组成10，如图所示：
-<img alt="img" src="../../img/lintcode/002/002_01.PNG" />
-不难看出，10是由2和5相乘得到的，因为偶数较多，所以只要找5的倍数即可。</p>
+<p>常见的算法时间复杂度由小到大依次为：<img alt="img" src="../../img/lintcode/002/002_02.PNG" /><br />
+常用的for循环的嵌套是外层是O(n)，内层是n的2次幂。因此遍历的次数要比一次for循环还要小，即要跳跃着遍历参数。</p>
+<p>观察到是阶乘，所以看看哪些能用乘法组成10，如图所示：
+<img alt="img" src="../../img/lintcode/002/002_01.PNG" /></p>
+<p>10是由2和5相乘得到的，而偶数较多，所以只要找5的倍数即可。</p>
 <h2 id="_4">算法代码</h2>
 <p>C++</p>
 <pre><code class="buildoutcfg">class Solution {
