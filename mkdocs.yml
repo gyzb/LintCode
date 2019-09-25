@@ -1,0 +1,5 @@
+site_name: LintCode
+pages:
+- Home: home.md
+- GYZB: gyzb.md
+theme: readthedocs

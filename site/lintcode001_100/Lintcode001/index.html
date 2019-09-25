@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Lintcode001 - Blog</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Lintcode001";
+    var mkdocs_page_input_path = "lintcode001_100\\Lintcode001.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Blog</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../home/">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../gyzb/">GYZB</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Blog</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Lintcode001</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="a-b">问题(A + B 问题)</h1>
+<p>给出两个整数 a 和 b , 求他们的和。</p>
+<h1 id="_1">说明</h1>
+<p>a和b都是<code>32位</code>整数么？<br />
+* 是的</p>
+<p>我可以使用位运算符么？<br />
+* 当然可以</p>
+<h1 id="_2">举例</h1>
+<h4 id="1">例 1:</h4>
+<pre><code>输入:  a = 1, b = 2  
+输出: 3   
+解释: 返回a + b的结果.
+</code></pre>
+<h4 id="2">例 2:</h4>
+<pre><code>输入:  a = -1, b = 1
+输出: 0   
+解释: 返回a + b的结果.
+</code></pre>
+<h1 id="_3">挑战</h1>
+<p>显然你可以直接 return a + b，但是你是否可以挑战一下不这样做？（不使用<code>+</code>等算数运算符）</p>
+<hr />
+<p><font color=#0099ff size=12 face="黑体">开始解题</font></p>
+<h2 id="_4">什么是与运算和或运算 ？</h2>
+<p>先讲个故事，假如你有一个亲兄弟或者姐妹，你们两个人要一起参加高考，你们的父亲答应你们如果你与他（她）都考上清华就带你们去给国外玩。而你们的母亲答应只要你们两个中有一个考上清华，就给你们买架钢琴。但是你们只能在父母的两个承诺中选择一个，而你们毫不犹豫的选择了母亲。因为母亲的承诺实现起来的概率大。母亲的运算方法就是或运算！而父亲的是与运算。
+如果还不明显，看一下这个图：
+<img alt="img" src="../../img/lintcode/001/001_01.PNG" />
+换成二进制就是:
+<img alt="img" src="../../img/lintcode/001/001_02.PNG" /></p>
+<p><font color=#ff99ff size=4 face="黑体">这就是二进制与运算及或运算的原理</font>  </p>
+<p>而所有计算机的数据都是以二进制存储的，只有<code>0</code>和<code>1</code>，不存在其他的数字，所以让我们看看加法是怎么实现的。
+10进制中，我们都知道超9要进位，同样在计算机中超1就进位。但是就像你看到的位于左上角的与运算结果还是1，是不进位的。
+所以，<font color=#ff99ff size=4 face="黑体">与预算及或运算都不进位！</font>  </p>
+<p>我们来看看其他的逻辑运算符（与，或，异或，非）：
+<img alt="img" src="../../img/lintcode/001/001_03.PNG" /><br />
+由此可以看到，<font color=#ff0000 size=4 face="黑体">与运算可以代替进位，异或运算可以代替不进位的加法。</font>所以我们就解决了，例如13+10：
+<img alt="img" src="../../img/lintcode/001/001_04.PNG" />
+<font color=#ff99ff size=4 face="黑体">与运算结果整体左移一位，因为两个结果都没有出现0，所以重复上面的操作</font>
+<img alt="img" src="../../img/lintcode/001/001_05.PNG" />  </p>
+<p><font color=#ff99ff size=4 face="黑体">虽然得到了结果，但是并不是我们要的结果，这是为什么？</font>
+<img alt="img" src="../../img/lintcode/001/001_06.PNG" /><br />
+<font color=#ff0000 size=4 face="黑体">两个字：补码！</font></p>
+<h3 id="_5">计算机的三种码</h3>
+<p>原码，反码，补码。
+因为主要讲算法所以我们只需要知道：<font color=#ff99ff size=4 face="黑体">源码取反得反码，反码加一得补码</font></p>
+<p>知道了原理再看就清楚明白了：
+<img alt="img" src="../../img/lintcode/001/001_07.PNG" /></p>
+<h2 id="_6">算法代码</h2>
+<p>C++</p>
+<pre><code class="buildoutcfg">class Solution {
+public:
+    /*
+     * @param : An integer
+     * @param : An integer
+     * @return: The sum of a and b
+     */
+    int aplusb(int a, int b) {
+        // write your code here
+        if(a==0)
+            return b;  
+        if(b==0)
+            return a;  
+        int x1 = a ^ b;  
+        int x2 = (a &amp; b) &lt;&lt; 1;  
+        return aplusb(x1, x2);
+    }
+</code></pre>
+
+<p>Python</p>
+<pre><code class="buildoutcfg">class Solution:
+    &quot;&quot;&quot;
+    @param a: An integer
+    @param b: An integer
+    @return: The sum of a and b 
+    &quot;&quot;&quot;
+    def aplusb(self, a, b):
+        # write your code here
+        import ctypes
+        a = ctypes.c_int32(a).value
+        b = ctypes.c_int32(b).value
+        while b != 0:
+            carry = ctypes.c_int32(a &amp; b).value
+            a = ctypes.c_int32(a ^ b).value
+            b = ctypes.c_int32(carry &lt;&lt; 1).value
+        return a
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
