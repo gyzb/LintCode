@@ -5,25 +5,25 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="None">
   
-  <link rel="shortcut icon" href="img/favicon.ico">
-  <title>Home - LintCode</title>
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Lintcode028 - LintCode</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Home";
-    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_name = "Lintcode028";
+    var mkdocs_page_input_path = "lintcode001_100\\Lintcode028.md";
     var mkdocs_page_url = null;
   </script>
   
-  <script src="js/jquery-2.1.1.min.js" defer></script>
-  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
   <script>hljs.initHighlightingOnLoad();</script> 
   
@@ -36,9 +36,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> LintCode</a>
+        <a href="../.." class="icon icon-home"> LintCode</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
   </form>
 </div>
@@ -50,12 +50,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="home/">Home</a>
+    <a class="" href="../../home/">Home</a>
 	    </li>
           
             <li class="toctree-l1">
 		
-    <a class="" href="gyzb/">GYZB</a>
+    <a class="" href="../../gyzb/">GYZB</a>
 	    </li>
           
         </ul>
@@ -68,7 +68,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">LintCode</a>
+        <a href="../..">LintCode</a>
       </nav>
 
       
@@ -76,11 +76,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".">Docs</a> &raquo;</li>
+    <li><a href="../..">Docs</a> &raquo;</li>
     
       
     
-    <li>Home</li>
+    <li>Lintcode028</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -90,7 +90,31 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">江湖處處是考驗 過不了考驗就是淘汰</h1>
+                <h1 id="_1">问题(搜索二维矩阵)</h1>
+<p>写出一个高效的算法来搜索 m × n矩阵中的值。
+这个矩阵具有以下特性：
+- 每行中的整数从左到右是排序的。
+- 每行的第一个数大于上一行的最后一个整数。</p>
+<h1 id="_2">举例</h1>
+<h4 id="1">例 1:</h4>
+<pre><code>输入: [[5]],2
+输出: false
+
+样例解释:没有包含，返回false。
+</code></pre>
+<h4 id="2">例 2:</h4>
+<pre><code>输入:  
+[
+  [1, 3, 5, 7],
+  [10, 11, 16, 20],
+  [23, 30, 34, 50]
+],3
+输出: true
+
+样例解释:包含则返回true。
+</code></pre>
+<h1 id="_3">挑战</h1>
+<p>O(log(n) + log(m)) 时间复杂度</p>
               
             </div>
           </div>
@@ -121,14 +145,9 @@
       
     </span>
 </div>
-    <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
 
 </body>
 </html>
-
-<!--
-MkDocs version : 1.0.4
-Build Date UTC : 2019-09-26 16:16:07
--->
