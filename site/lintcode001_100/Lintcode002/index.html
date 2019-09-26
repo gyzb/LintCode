@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Lintcode002 - LintCode</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Lintcode002";
+    var mkdocs_page_input_path = "lintcode001_100\\Lintcode002.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> LintCode</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../home/">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../gyzb/">GYZB</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">LintCode</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Lintcode002</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">问题(尾部的零)</h1>
+<p>设计一个算法，计算出n阶乘中尾部零的个数。</p>
+<h1 id="_2">举例</h1>
+<h4 id="1">例 1:</h4>
+<pre><code>输入: 11
+输出: 2
+
+样例解释: 11! = 39916800, 结尾的0有2个。
+</code></pre>
+<h4 id="2">例 2:</h4>
+<pre><code>输入: 5
+输出: 1
+
+样例解释: 5! = 120， 结尾的0有1个。
+</code></pre>
+<h1 id="_3">挑战</h1>
+<p>O(logN)的时间复杂度</p>
+<hr />
+<p><font color=#0099ff size=12 face="黑体">开始解题</font></p>
+<p>常见的算法时间复杂度由小到大依次为：<img alt="img" src="../../img/lintcode/002/002_02.PNG" /><br />
+常用的for循环的嵌套是外层是O(n)，内层是n的2次幂。因此遍历的次数要比一次for循环还要小，即要跳跃着遍历参数。</p>
+<p>观察到是阶乘，所以看看哪些能用乘法组成10，如图所示：
+<img alt="img" src="../../img/lintcode/002/002_01.PNG" /></p>
+<p>10是由2和5相乘得到的，而偶数较多，所以只要找5的倍数即可。</p>
+<h2 id="_4">算法代码</h2>
+<p>C++</p>
+<pre><code class="buildoutcfg">class Solution {
+public:
+    /*
+     * @param n: A long integer
+     * @return: An integer, denote the number of trailing zeros in n!
+     */
+    long long trailingZeros(long long n) {
+        // write your code here, try to do it without arithmetic operators.
+        if (n == 0)
+        {
+            return 1;
+        }
+        if(n &gt; 0 &amp;&amp; n &lt; 5)
+        {
+            return 0;
+        }else{
+            return (n/5 + trailingZeros(n/5));
+        }
+    }
+};
+</code></pre>
+
+<p>Python</p>
+<pre><code class="buildoutcfg">class Solution:
+    &quot;&quot;&quot;
+    @param: n: An integer
+    @return: An integer, denote the number of trailing zeros in n!
+    &quot;&quot;&quot;
+    def trailingZeros(self, n):
+        # write your code here, try to do it without arithmetic operators.
+        if n == 0:
+            return 1;
+        x = 0
+        while n &gt; 5:
+            x += n // 5
+            n = n // 5
+        return x
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
