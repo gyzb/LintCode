@@ -103,6 +103,41 @@
 </code></pre>
 <h1 id="_2">挑战</h1>
 <p>要求时间复杂度为O(n)，空间复杂度为O(1)。</p>
+<h2 id="_3">算法代码</h2>
+<p>C++</p>
+<pre><code class="buildoutcfg">class Solution {
+public:
+    /**
+     * @param n: An integer
+     * @param nums: An array
+     * @return: the Kth largest element
+     */
+    int kthLargestElement(int n, vector&lt;int&gt; &amp;nums) {
+        // write your code here
+        make_heap(nums.begin(), nums.end());
+        for(int i = 1; i &lt; n; i++)
+        {
+            pop_heap(nums.begin(), nums.end());
+            nums.pop_back();
+        }
+        return nums[0];
+    }
+};
+</code></pre>
+
+<p>Python</p>
+<pre><code class="buildoutcfg">class Solution:
+    &quot;&quot;&quot;
+    @param n: An integer
+    @param nums: An array
+    @return: the Kth largest element
+    &quot;&quot;&quot;
+    def kthLargestElement(self, n, nums):
+        # write your code here
+        nums.sort(reverse=True)
+        return nums[n-1]
+
+</code></pre>
               
             </div>
           </div>

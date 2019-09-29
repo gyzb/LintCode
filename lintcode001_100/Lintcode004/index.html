@@ -106,6 +106,10 @@
 </code></pre>
 <h1 id="_2">挑战</h1>
 <p>要求时间复杂度为 O(nlogn) 或者 O(n)。    </p>
+<hr />
+<p><font color=#0099ff size=12 face="黑体">开始解题</font></p>
+<p>一般会想到对整数进行除法操作，看看能不能得到1。换一种角度，想想<font color=#ff99ff size=4 face="黑体">斐波那契数列</font>，第一个丑数是1，然后对丑数进行乘2，乘3，乘5操作就可以得到2，3，5，因为2最小，所以得到第二个丑数2。以此类推：
+<img alt="img" src="../../img/lintcode/004/004_01.PNG" /></p>
 <h2 id="_3">算法代码</h2>
 <p>C++</p>
 <pre><code class="buildoutcfg">class Solution {
